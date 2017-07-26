@@ -1,0 +1,13 @@
+{
+  "port": 3000,
+  "log4js": {
+    "appenders": {
+      "app": {
+        "type": "console"
+      }
+    },
+    "categories": {
+      "default": { "appenders": ["app"], "level": "debug" }
+    }
+  }
+}

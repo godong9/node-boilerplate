@@ -1,0 +1,15 @@
+{
+  "port": 9000,
+  "log4js": {
+    "appenders": {
+      "app": {
+        "type": "dateFile",
+        "filename": "logs/server.log",
+        "pattern":"-yyyy-MM-dd"
+      }
+    },
+    "categories": {
+      "default": { "appenders": ["app"], "level": "info" }
+    }
+  }
+}

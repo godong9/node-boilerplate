@@ -6,13 +6,14 @@ import sourcemaps from 'gulp-sourcemaps';
 import nodemon from 'gulp-nodemon';
 import mocha from 'gulp-mocha';
 
-const SRC_FILES = 'app/**/*.js';
+const SOURCE_FILES = 'app/**/*.js';
+const TEST_FILES = 'test/**/*.js';
 const SRC_PATH = 'app';
 const DIST_PATH = 'dist';
 
 gulp.task('clean', () => rimraf.sync(DIST_PATH));
 
-gulp.task('build', ['clean'], () => gulp.src(SRC_FILES)
+gulp.task('build', ['clean'], () => gulp.src(SOURCE_FILES)
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write())
@@ -20,7 +21,7 @@ gulp.task('build', ['clean'], () => gulp.src(SRC_FILES)
 );
 
 gulp.task('test', () => {
-    gulp.src([SRC_FILES])
+    gulp.src([TEST_FILES])
         .pipe(mocha({reporter: 'nyan'}))
 });
 
@@ -35,11 +36,11 @@ gulp.task('server', ['build'], () => {
 
 gulp.task('default', function() {
     // ESLint 실행
-    gulp.src([SRC_FILES])
+    gulp.src([SOURCE_FILES])
         .pipe(eslint())
         .pipe(eslint.format());
     // Babel 실행
-    gulp.src(SRC_FILES)
+    gulp.src(SOURCE_FILES)
         .pipe(babel())
         .pipe(gulp.dest(DIST_PATH));
 });

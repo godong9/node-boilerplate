@@ -31,6 +31,9 @@
     "supertest": "^3.0.0"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "config": "^1.26.1",
+    "express": "^4.15.3",
+    "log4js": "^2.3.1",
+    "morgan": "^1.8.2"
   }
 }
