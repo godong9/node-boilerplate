@@ -5,6 +5,7 @@ import rimraf from 'rimraf';
 import sourcemaps from 'gulp-sourcemaps';
 import nodemon from 'gulp-nodemon';
 import mocha from 'gulp-mocha';
+import apidoc from 'gulp-apidoc';
 
 const SOURCE_FILES = 'app/**/*.js';
 const TEST_FILES = 'test/**/*.js';
@@ -23,6 +24,13 @@ gulp.task('build', ['clean'], () => gulp.src(SOURCE_FILES)
 gulp.task('test', () => {
     gulp.src([TEST_FILES])
         .pipe(mocha({reporter: 'nyan'}))
+});
+
+gulp.task('apidoc', (done) => {
+  apidoc({
+    src: "app/",
+    dest: "doc/"
+  }, done);
 });
 
 gulp.task('server', ['build'], () => {
