@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import config from 'config';
 import log4js from 'log4js';
+import path from 'path';
 
 log4js.configure(config.get('log4js'));
 
@@ -13,6 +14,10 @@ logger.info(`env.NODE_ENV: ${process.env.NODE_ENV}`);
 
 app.use(morgan('combined'));
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 /**
  * @api {get} / Request Main
  * @apiName Main
@@ -20,6 +25,17 @@ app.use(morgan('combined'));
  */
 app.get('/', function (req, res) {
     res.send('hello, world!')
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 app.listen(port, () => {
