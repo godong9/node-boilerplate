@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import config from 'config';
 import log4js from 'log4js';
 import path from 'path';
+import index from './routes/index';
 
 log4js.configure(config.get('log4js'));
 
@@ -18,17 +19,10 @@ app.use(morgan('combined'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-/**
- * @api {get} / Request Main
- * @apiName Main
- * @apiGroup Main
- */
-app.get('/', function (req, res) {
-    res.send('hello, world!')
-});
+app.use('/', index);
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
