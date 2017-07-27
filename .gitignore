@@ -65,3 +65,6 @@ dist/
 
 # Doc file
 doc/
+
+# production.json
+config/production.json

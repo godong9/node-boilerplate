@@ -1,7 +1,13 @@
+const models  = require('../models');
+const User = models.User;
 
 const UserController = {
   getUsers: function getUsers(req, res) {
-    res.send('user list');
+    User.findAll({
+
+    }).then(users => {
+      res.send(users);
+    })
   }
 };
 
