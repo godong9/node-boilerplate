@@ -6,6 +6,7 @@ import path from 'path';
 import index from './routes/index';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import users from './routes/users';
 
 const MAXIMUM_BODY_SIZE = '10mb';
 
@@ -32,6 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/', index);
+app.use('/users', users);
 
 // error handler
 app.use(function(err, req, res) {
