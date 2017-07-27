@@ -33,7 +33,9 @@
     "supertest": "^3.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "config": "^1.26.1",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "log4js": "^2.3.1",
