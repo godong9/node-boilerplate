@@ -4,8 +4,6 @@ import config from 'config';
 import log4js from 'log4js';
 import path from 'path';
 import index from './routes/index';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
 import users from './routes/users';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
