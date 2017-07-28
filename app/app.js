@@ -3,10 +3,12 @@ import morgan from 'morgan';
 import config from 'config';
 import log4js from 'log4js';
 import path from 'path';
-import index from './routes/index';
-import users from './routes/users';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import HttpCode from './utils/httpCode';
+
+import index from './routes/index';
+import users from './routes/users';
 
 const MAXIMUM_BODY_SIZE = '10mb';
 
@@ -42,7 +44,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || HttpCode.INTERNAL_SERVER_ERROR);
   res.render('error');
 });
 
