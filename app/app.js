@@ -51,3 +51,5 @@ app.use(function(err, req, res, next) {
 app.listen(port, () => {
     logger.info(`Server is Listening port ${port}.`);
 });
+
+module.exports = app;
