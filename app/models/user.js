@@ -10,18 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       field: 'name',
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      field: 'created_at',
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      field: 'updated_at',
-    },
+    }
   }, {
     tableName: 'users',
-    timestamps: false,
+    timestamps: true,
   });
 
   return User;

@@ -11,9 +11,9 @@
     }
   },
   "database": {
-    "username": "",
-    "password": "",
-    "database": "",
+    "username": "test",
+    "password": "test",
+    "database": "content",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
