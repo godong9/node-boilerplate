@@ -1,11 +1,9 @@
-import models from '../models';
+import UserService from '../services/users';
 import HttpCode from '../utils/httpCode';
-
-const User = models.User;
 
 const UserController = {
   getUsers: function getUsers(req, res) {
-    User.findAll({}).then(users => {
+    UserService.getUsers().then(users => {
       res.status(HttpCode.OK).send({
         users: users
       });
