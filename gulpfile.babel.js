@@ -23,6 +23,7 @@ gulp.task('build', ['clean'], () =>
 );
 
 gulp.task('test', () => {
+  process.env.NODE_ENV = 'test';
   gulp.src([TEST_FILES])
     .pipe(mocha({
       compilers: 'js:babel-core/register',
