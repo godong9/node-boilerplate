@@ -3,15 +3,16 @@ import { expect } from 'chai';
 import UserService from '../../app/services/users';
 
 describe('UserService.getUsers', () => {
-  beforeEach(() => {
-    UserService.deleteAll();
+  before((done) => {
+    // given
+    UserService.deleteAll()
+      .then(UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
+      .then(() => done());
   });
 
   it('should get users', (done) => {
-    // given
-    UserService.saveUser({ nickname: 'test', email: 'test@test.com' })
-      // when
-      .then(() => UserService.getUsers())
+    // when
+    UserService.getUsers()
       .then(users => {
         // then
         expect(users.length).to.equal(1);

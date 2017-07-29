@@ -13,7 +13,7 @@ const UserService = {
     return User.create(params);
   },
   deleteAll: function deleteAll() {
-    User.destroy({ truncate: true });
+    return User.destroy({ truncate: true });
   }
 };
 
