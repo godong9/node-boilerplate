@@ -18,13 +18,10 @@ describe('ContentService.getContents', () => {
       .then(UserService.deleteAll())
       .then(saveAndGetUser()
         .then(function(user) {
-          console.log("=====!!!");
-          console.log(user.id);
           ContentService.saveContent({ title: 'test title', text: 'test text', userId: user.id })
             .then(done())
         })
       );
-      // .then(done());
   });
 
   it('should get contents', (done) => {

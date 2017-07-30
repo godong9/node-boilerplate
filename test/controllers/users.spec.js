@@ -12,7 +12,6 @@ describe('GET /users', () => {
       .then(
         UserService.saveUser({ nickname: 'test', email: 'test@test.com' })
           .then(function (user) {
-            console.log(user);
             done();
           })
       );
