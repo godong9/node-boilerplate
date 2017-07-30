@@ -15,14 +15,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       field: 'text',
     },
+    userId: {
+      type: DataTypes.BIGINT,
+      field: 'userId',
+    },
   }, {
-    tableName: 'users',
+    tableName: 'contents',
       timestamps: true,
   });
 
   Content.associate = function(models) {
     Content.belongsTo(models.User, {
-      as: 'content'
+      as: 'user'
     });
   };
 

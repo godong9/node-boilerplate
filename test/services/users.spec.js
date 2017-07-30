@@ -7,7 +7,11 @@ describe('UserService.getUsers', () => {
     // given
     UserService.deleteAll()
       .then(UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
-      .then(() => done());
+      .then(done());
+  });
+
+  it('should get user', (done) => {
+    done();
   });
 
   it('should get users', (done) => {

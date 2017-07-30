@@ -9,7 +9,7 @@ const UserService = {
   getUser: function getUser(id) {
     return User.findById(id);
   },
-  saveUser: function createUser(params) {
+  saveUser: function saveUser(params) {
     return User.create(params);
   },
   deleteAll: function deleteAll() {

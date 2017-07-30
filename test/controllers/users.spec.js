@@ -6,10 +6,16 @@ import UserService from '../../app/services/users';
 
 describe('GET /users', () => {
   before((done) => {
+
     // given
     UserService.deleteAll()
-      .then(UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
-      .then(() => done());
+      .then(
+        UserService.saveUser({ nickname: 'test', email: 'test@test.com' })
+          .then(function (user) {
+            console.log(user);
+            done();
+          })
+      );
   });
 
   it('should success and get users', (done) => {
