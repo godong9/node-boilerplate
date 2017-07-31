@@ -6,8 +6,8 @@ describe('UserService.getUsers', () => {
   before((done) => {
     // given
     UserService.deleteAll()
-      .then(UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
-      .then(done());
+      .then(() => UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
+      .then(() => done());
   });
 
   it('should get user', (done) => {

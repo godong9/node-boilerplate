@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
   }, {
     tableName: 'contents',
-      timestamps: true,
+    timestamps: true,
   });
 
   Content.associate = function(models) {
