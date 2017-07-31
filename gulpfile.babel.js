@@ -5,12 +5,16 @@ import rimraf from 'rimraf';
 import sourcemaps from 'gulp-sourcemaps';
 import nodemon from 'gulp-nodemon';
 import mocha from 'gulp-mocha';
+import istanbul from 'gulp-istanbul';
 import apidoc from 'gulp-apidoc';
+import { Instrumenter } from 'isparta';
 
 const SOURCE_FILES = 'app/**/*.js';
 const TEST_FILES = 'test/**/*.js';
 const SRC_PATH = 'app';
 const DIST_PATH = 'dist';
+
+const GLOBAL_COVERAGE_MIN = 80;
 
 gulp.task('clean', () => rimraf.sync(DIST_PATH));
 
@@ -22,19 +26,31 @@ gulp.task('build', ['clean'], () =>
     .pipe(gulp.dest(DIST_PATH))
 );
 
-gulp.task('test', () => {
+gulp.task('pre-test', () => {
+  gulp.src([SOURCE_FILES])
+    .pipe(istanbul({
+      instrumenter: Instrumenter,
+      includeUntested: true,
+    }));
+});
+
+gulp.task('test', ['pre-test'], () => {
   process.env.NODE_ENV = 'test';
   gulp.src([TEST_FILES])
     .pipe(mocha({
       compilers: 'js:babel-core/register',
-      reporter: 'nyan'
+      reporter: 'nyan',
     }))
+    .pipe(istanbul.writeReports({
+      reporters: [ 'lcov', 'json', 'text', 'text-summary' ],
+    }))
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: GLOBAL_COVERAGE_MIN } }));
 });
 
 gulp.task('apidoc', (done) => {
   apidoc({
     src: 'app/',
-    dest: 'doc/'
+    dest: 'doc/',
   }, done);
 });
 
@@ -43,7 +59,7 @@ gulp.task('server', ['build'], () => {
     script: `./${DIST_PATH}/app.js`,
     watch: [ SRC_PATH ],
     tasks: [ 'build' ],
-    env: { NODE_ENV: 'development' }
+    env: { NODE_ENV: 'development' },
   });
 });
 
