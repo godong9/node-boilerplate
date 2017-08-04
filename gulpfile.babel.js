@@ -11,7 +11,8 @@ import { Instrumenter } from 'isparta';
 
 const SOURCE_FILES = 'app/**/*.js';
 const TEST_FILES = 'test/**/*.js';
-const COVERAGE_FILES = [SOURCE_FILES, '!app/app.js', '!app/models/**/*.js']
+const COVERAGE_FILES = [SOURCE_FILES, '!app/app.js', '!app/models/**/*.js'];
+
 const SRC_PATH = 'app';
 const DIST_PATH = 'dist';
 
