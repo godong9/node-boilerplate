@@ -16,10 +16,11 @@ const ContentService = {
     return Content.findAll(params);
   },
   getContent: function getContent(id) {
-    const params = Object.assign({}, commonOptions);
-    return Content.findById(id, params);
+    const options = Object.assign({}, commonOptions);
+    return Content.findById(id, options);
   },
   saveContent: function saveContent(params) {
+    params = Object.assign({}, params);
     return Content.create(params);
   },
   deleteAll: function deleteAll() {
