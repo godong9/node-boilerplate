@@ -3,6 +3,35 @@ import { expect } from 'chai';
 import UserService from '../../app/services/users';
 import ContentService from '../../app/services/contents';
 
+describe('ContentService.getContent', () => {
+  let testContent = null;
+
+  before((done) => {
+    // given
+    ContentService.deleteAll()
+      .then(() => UserService.deleteAll())
+      .then(() => UserService.saveUser({ nickname: 'test', email: 'test@test.com' }))
+      .then((user) => ContentService.saveContent({ title: 'test title', text: 'test text', userId: user.id }))
+      .then(function (content) {
+        testContent = content;
+        done();
+      });
+  });
+
+  it('should get content', (done) => {
+    // when
+    ContentService.getContent(testContent.id)
+      .then(content => {
+        // then
+        expect(content.title).to.equal('test title');
+        expect(content.text).to.equal('test text');
+        expect(content.user.nickname).to.equal('test');
+        expect(content.user.email).to.equal('test@test.com');
+        done();
+      });
+  });
+});
+
 describe('ContentService.getContents', () => {
   before((done) => {
     // given
