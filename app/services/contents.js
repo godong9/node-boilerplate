@@ -15,6 +15,11 @@ const ContentService = {
     params = Object.assign({}, params, commonOptions);
     return Content.findAll(params);
   },
+  getContentsByUserId: function getContents(userId) {
+    const params = Object.assign({}, params, commonOptions);
+    params.include[0].where = { id: userId };
+    return Content.findAll(params);
+  },
   getContent: function getContent(id) {
     const options = Object.assign({}, commonOptions);
     return Content.findById(id, options);
