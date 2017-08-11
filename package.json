@@ -34,6 +34,8 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "rimraf": "^2.6.1",
+    "shipit-cli": "^3.0.0",
+    "shipit-deploy": "^2.5.1",
     "supertest": "^3.0.0"
   },
   "dependencies": {
