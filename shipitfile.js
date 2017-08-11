@@ -13,8 +13,8 @@ module.exports = function (shipit) {
       keepReleases: 5,
       shallowClone: true
     },
-    godong: {
-      servers: 'godong@godong9.com',
+    test: {
+      servers: 'test@test.com',
       branch: 'master'
     }
   });
