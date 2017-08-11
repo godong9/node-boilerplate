@@ -10,7 +10,7 @@ module.exports = function (shipit) {
       repositoryUrl: 'https://github.com/godong9/node-boilerplate.git',
       ignores: ['.git', 'node_modules'],
       rsync: ['--del'],
-      keepReleases: 2,
+      keepReleases: 5,
       shallowClone: true
     },
     godong: {
