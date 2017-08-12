@@ -33,4 +33,5 @@ const ContentService = {
   }
 };
 
+export default ContentService;
 module.exports = ContentService;

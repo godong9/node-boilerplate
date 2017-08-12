@@ -6,4 +6,4 @@ const router = express.Router();
 /* GET index page */
 router.get('/', IndexController.getIndexView);
 
-module.exports = router;
+export default router;
