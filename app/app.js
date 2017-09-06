@@ -1,25 +1,30 @@
 import express from 'express';
 import morgan from 'morgan';
 import config from 'config';
-import log4js from 'log4js';
 import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+
+import logger from './utils/logger';
 import HttpCode from './utils/httpCode';
 
 import index from './routes/index';
 import users from './routes/users';
 
 const MAXIMUM_BODY_SIZE = '10mb';
+const MORGAN_LOGGING_TYPE = 'short';
 
-log4js.configure(config.get('log4js'));
-const logger = log4js.getLogger('app');
 const app = express();
 const port = process.env.PORT || config.port;
 
 logger.info(`env.NODE_ENV: ${process.env.NODE_ENV}`);
 
-app.use(morgan('combined'));
+app.use(morgan(MORGAN_LOGGING_TYPE, { "stream": logger.stream }));
+
+// use helmet
+app.use(helmet());
+app.disable('x-powered-by');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ limit: MAXIMUM_BODY_SIZE, extended: false }));

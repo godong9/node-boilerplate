@@ -1,13 +1,26 @@
 {
   "port": 3000,
-  "log4js": {
-    "appenders": {
-      "app": {
-        "type": "console"
-      }
+  "logger": {
+    "console": {
+      "level": "debug",
+      "colorize": true,
+      "timestamp": true
     },
-    "categories": {
-      "default": { "appenders": [ "app" ], "level": "debug" }
+    "file": {
+      "level": "debug",
+      "timestamp": true,
+      "filename": "logs/server.log",
+      "json": false,
+      "maxsize": "10MB",
+      "tailable": true
+    },
+    "rotate": {
+      "level": "debug",
+      "json": false,
+      "timestamp": true,
+      "filename": "logs/server.log",
+      "datePattern": "-yyyy-MM-dd",
+      "maxFiles": 10
     }
   },
   "database": {
