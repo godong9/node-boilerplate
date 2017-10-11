@@ -1,32 +1,32 @@
 
 module.exports = function(sequelize, DataTypes) {
-  const Content = sequelize.define('Content', {
+  const Content = sequelize.define("Content", {
     id: {
       type: DataTypes.BIGINT,
-      field: 'id',
+      field: "id",
       primaryKey: true,
       autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
-      field: 'title',
+      field: "title",
     },
     text: {
       type: DataTypes.STRING,
-      field: 'text',
+      field: "text",
     },
     userId: {
       type: DataTypes.BIGINT,
-      field: 'userId',
+      field: "userId",
     },
   }, {
-    tableName: 'contents',
+    tableName: "contents",
     timestamps: true,
   });
 
   Content.associate = function(models) {
     Content.belongsTo(models.User, {
-      as: 'user'
+      as: "user"
     });
   };
 

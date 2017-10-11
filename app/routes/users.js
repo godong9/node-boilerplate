@@ -1,5 +1,5 @@
-import express from 'express';
-import UserController from '../controllers/users';
+import express from "express";
+import UserController from "../controllers/users";
 
 const router = express.Router();
 
@@ -13,6 +13,6 @@ const router = express.Router();
  * @apiSuccess {String} users.email 유저 이메일
  * @apiSuccess {String} users.nickname 유저 닉네임
  */
-router.get('/', UserController.getUsers);
+router.get("/", UserController.getUsers);
 
 export default router;

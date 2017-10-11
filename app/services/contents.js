@@ -1,11 +1,11 @@
-import models from '../models';
+import models from "../models";
 
 const Content = models.Content;
 
 const commonOptions = {
   include: [
     {
-      association: 'user',
+      association: "user",
     }
   ]
 };

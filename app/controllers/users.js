@@ -1,5 +1,5 @@
-import UserService from '../services/users';
-import HttpCode from '../utils/httpCode';
+import UserService from "../services/users";
+import HttpCode from "../utils/httpCode";
 
 const UserController = {
   getUsers: function getUsers(req, res) {
