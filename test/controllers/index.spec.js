@@ -1,15 +1,15 @@
-import request from 'supertest';
-import { expect } from 'chai';
+import request from "supertest";
+import { expect } from "chai";
 
-import app from '../../app/app';
+import app from "../../app/app";
 
-describe('GET /', () => {
-  it('should respond with text message "index page"', (done) => {
+describe("GET /", () => {
+  it("should respond with text message 'index page'", (done) => {
     request(app)
-      .get('/')
+      .get("/")
       .expect(200)
       .end((err, res) => {
-        expect(res.text).to.equal('index page');
+        expect(res.text).to.equal("index page");
         done();
       });
   });

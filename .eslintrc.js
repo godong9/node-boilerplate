@@ -1,7 +1,9 @@
 module.exports = {
   "env": {
     "browser": true,
-    "es6": true
+    "node": true,
+    "es6": true,
+    "mocha": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
@@ -11,7 +13,7 @@ module.exports = {
     "no-console": 0,
     "indent": [
       "error",
-      4
+      2
     ],
     "linebreak-style": [
       "error",
@@ -19,7 +21,7 @@ module.exports = {
     ],
     "quotes": [
       "error",
-      "single"
+      "double"
     ],
     "semi": [
       "error",

@@ -1,58 +1,58 @@
 
 module.exports = function (shipit) {
-  require('shipit-deploy')(shipit);
+  require("shipit-deploy")(shipit);
   const cmdOptions = { maxBuffer: 100 * 1024 * 1024 };
 
   shipit.initConfig({
     default: {
-      workspace: '/tmp/node-boilerplate',
-      deployTo: '/home/godong/node-boilerplate',
-      repositoryUrl: 'https://github.com/godong9/node-boilerplate.git',
-      ignores: ['.git', 'node_modules'],
-      rsync: ['--del'],
+      workspace: "/tmp/node-boilerplate",
+      deployTo: "/home/godong/node-boilerplate",
+      repositoryUrl: "https://github.com/godong9/node-boilerplate.git",
+      ignores: [".git", "node_modules"],
+      rsync: ["--del"],
       keepReleases: 5,
       shallowClone: true
     },
     test: {
-      servers: 'test@test.com',
-      branch: 'master'
+      servers: "test@test.com",
+      branch: "master"
     }
   });
 
-  shipit.task('env', function () {
+  shipit.task("env", function () {
     let buildCommand = [
-      'env'
+      "env"
     ];
 
     return shipit.remote(makeCommandStr(buildCommand), cmdOptions);
   });
 
-  shipit.task('pwd', function () {
-    return shipit.remote('pwd');
+  shipit.task("pwd", function () {
+    return shipit.remote("pwd");
   });
 
-  shipit.blTask('build', function () {
+  shipit.blTask("build", function () {
     let buildCommand = [
-      'cd ' + shipit.config.deployTo + '/current',
+      "cd " + shipit.config.deployTo + "/current",
       // package 설치
-      'npm install',
+      "npm install",
       // package 빌드
-      'gulp build'
+      "gulp build"
     ];
 
     return shipit.remote(makeCommandStr(buildCommand), cmdOptions);
   });
 
-  shipit.blTask('start', function () {
+  shipit.blTask("start", function () {
     let buildCommand = [
-      'cd ' + shipit.config.deployTo + '/current',
-      'NODE_ENV="production" pm2 startOrRestart --env production process.json'
+      "cd " + shipit.config.deployTo + "/current",
+      "NODE_ENV='production' pm2 startOrRestart --env production process.json"
     ];
 
     return shipit.remote(makeCommandStr(buildCommand), cmdOptions);
   });
 
-  shipit.blTask('deploy-server', ['deploy', 'build', 'start'], function() {
+  shipit.blTask("deploy-server", ["deploy", "build", "start"], function() {
 
   });
 

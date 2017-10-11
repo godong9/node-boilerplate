@@ -1,7 +1,7 @@
 
 const IndexController = {
   getIndexView: function getIndexView(req, res) {
-    res.send('index page');
+    res.send("index page");
   }
 };
 
