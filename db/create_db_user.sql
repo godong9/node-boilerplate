@@ -1,4 +1,4 @@
-CREATE USER 'test'@'localhost' IDENTIFIED BY 'test';
-GRANT ALL PRIVILEGES ON *.* TO 'test'@'localhost' WITH GRANT OPTION;
-CREATE USER 'test'@'%' IDENTIFIED BY 'test';
-GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' WITH GRANT OPTION;
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testuser';
+GRANT ALL PRIVILEGES ON *.* TO 'testuser'@'localhost' WITH GRANT OPTION;
+CREATE USER 'testuser'@'%' IDENTIFIED BY 'testuser';
+GRANT ALL PRIVILEGES ON *.* TO 'testuser'@'%' WITH GRANT OPTION;

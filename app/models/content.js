@@ -1,5 +1,5 @@
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   const Content = sequelize.define("Content", {
     id: {
       type: DataTypes.BIGINT,
@@ -24,9 +24,9 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: true,
   });
 
-  Content.associate = function(models) {
+  Content.associate = (models) => {
     Content.belongsTo(models.User, {
-      as: "user"
+      as: "user",
     });
   };
 

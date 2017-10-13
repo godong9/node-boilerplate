@@ -1,8 +1,15 @@
+import express from "express";
 
-const IndexController = {
-  getIndexView: function getIndexView(req, res) {
-    res.send("index page");
-  }
-};
+import UserController from "./users";
 
-export default IndexController;
+const router = express.Router();
+
+// users API controller
+router.use("/users", UserController);
+
+/* GET index page */
+router.get("/", (req, res) => {
+  res.send("index page");
+});
+
+export default router;

@@ -8,9 +8,9 @@ describe("ContentService.getContents", () => {
     // given
     ContentService.deleteAll()
       .then(() => UserService.deleteAll())
-      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com" }))
-      .then((user) => ContentService.saveContent({ title: "test title", text: "test text", userId: user.id }))
-      .then(function () {
+      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com", }))
+      .then((user) => ContentService.saveContent({ title: "test title", text: "test text", userId: user.id, }))
+      .then(() => {
         done();
       });
   });
@@ -37,12 +37,12 @@ describe("ContentService.getContentsByUserId", () => {
     // given
     ContentService.deleteAll()
       .then(() => UserService.deleteAll())
-      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com" }))
-      .then(function (user) {
+      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com", }))
+      .then((user) => {
         testUser = user;
-        return ContentService.saveContent({ title: "test title", text: "test text", userId: user.id });
+        return ContentService.saveContent({ title: "test title", text: "test text", userId: user.id, });
       })
-      .then(function () {
+      .then(() => {
         done();
       });
   });
@@ -79,9 +79,9 @@ describe("ContentService.getContent", () => {
     // given
     ContentService.deleteAll()
       .then(() => UserService.deleteAll())
-      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com" }))
-      .then((user) => ContentService.saveContent({ title: "test title", text: "test text", userId: user.id }))
-      .then(function (content) {
+      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com", }))
+      .then((user) => ContentService.saveContent({ title: "test title", text: "test text", userId: user.id, }))
+      .then((content) => {
         testContent = content;
         done();
       });

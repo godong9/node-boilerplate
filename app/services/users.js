@@ -4,20 +4,19 @@ const User = models.User;
 
 const UserService = {
   getUsers: function getUsers(params) {
-    params = Object.assign({}, params);
-    return User.findAll(params);
+    const modelParams = Object.assign({}, params);
+    return User.findAll(modelParams);
   },
   getUser: function getUser(id) {
     return User.findById(id);
   },
   saveUser: function saveUser(params) {
-    params = Object.assign({}, params);
-    return User.create(params);
+    const modelParams = Object.assign({}, params);
+    return User.create(modelParams);
   },
   deleteAll: function deleteAll() {
-    return User.destroy({ truncate: true });
-  }
+    return User.destroy({ truncate: true, });
+  },
 };
 
 export default UserService;
-module.exports = UserService;

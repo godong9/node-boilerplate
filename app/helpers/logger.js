@@ -9,13 +9,13 @@ logger.configure({
     new winston.transports.Console(config.get("logger").console),
     new winston.transports.File(config.get("logger").file),
     new winston.transports.DailyRotateFile(config.get("logger").rotate),
-  ]
+  ],
 });
 
 logger.stream = {
-  write: function(message){
+  write: (message) => {
     logger.info(message);
-  }
+  },
 };
 
 export default logger;

@@ -6,14 +6,21 @@ describe("UserService.getUsers", () => {
   before((done) => {
     // given
     UserService.deleteAll()
-      .then(() => UserService.saveUser({ nickname: "test1", email: "test1@test.com" }))
-      .then(() => UserService.saveUser({ nickname: "test2", email: "test2@test.com" }))
+      .then(() => UserService.saveUser({ nickname: "test1", email: "test1@test.com", }))
+      .then(() => UserService.saveUser({ nickname: "test2", email: "test2@test.com", }))
       .then(() => done());
   });
 
   it("should get all users", (done) => {
     // when
-    const params = { order: [["nickname", "DESC"]] };
+    const params = {
+      order:
+      [
+        [
+          "nickname", "DESC",
+        ],
+      ],
+    };
     UserService.getUsers(params)
       .then(users => {
         // then
@@ -24,7 +31,7 @@ describe("UserService.getUsers", () => {
 
   it("should get test1 user", (done) => {
     // when
-    const params = { where: { nickname: "test1" } };
+    const params = { where: { nickname: "test1", }, };
     UserService.getUsers(params)
       .then(users => {
         // then
@@ -37,7 +44,14 @@ describe("UserService.getUsers", () => {
 
   it("should get all users order by nickname desc", (done) => {
     // when
-    const params = { order: [["nickname", "DESC"]] };
+    const params = {
+      order:
+        [
+          [
+            "nickname", "DESC",
+          ],
+        ],
+    };
     UserService.getUsers(params)
       .then(users => {
         // then
@@ -57,7 +71,7 @@ describe("UserService.getUser", () => {
   before((done) => {
     // given
     UserService.deleteAll()
-      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com" }))
+      .then(() => UserService.saveUser({ nickname: "test", email: "test@test.com", }))
       .then(function (user) {
         testUser = user;
         done();

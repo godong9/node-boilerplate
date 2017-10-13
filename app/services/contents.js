@@ -6,32 +6,31 @@ const commonOptions = {
   include: [
     {
       association: "user",
-    }
-  ]
+    },
+  ],
 };
 
 const ContentService = {
   getContents: function getContents(params) {
-    params = Object.assign({}, params, commonOptions);
-    return Content.findAll(params);
+    const modelParams = Object.assign({}, params, commonOptions);
+    return Content.findAll(modelParams);
   },
   getContentsByUserId: function getContents(userId) {
-    const params = Object.assign({}, params, commonOptions);
-    params.include[0].where = { id: userId };
-    return Content.findAll(params);
+    const modelParams = Object.assign({}, commonOptions);
+    modelParams.include[0].where = { id: userId, };
+    return Content.findAll(modelParams);
   },
   getContent: function getContent(id) {
     const options = Object.assign({}, commonOptions);
     return Content.findById(id, options);
   },
   saveContent: function saveContent(params) {
-    params = Object.assign({}, params);
-    return Content.create(params);
+    const modelParams = Object.assign({}, params);
+    return Content.create(modelParams);
   },
   deleteAll: function deleteAll() {
-    return Content.destroy({ truncate: true });
-  }
+    return Content.destroy({ truncate: true, });
+  },
 };
 
 export default ContentService;
-module.exports = ContentService;

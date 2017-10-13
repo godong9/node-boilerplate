@@ -5,16 +5,12 @@ module.exports = {
     "es6": true,
     "mocha": true
   },
-  "extends": "eslint:recommended",
+  "extends": "airbnb-base/legacy",
   "parserOptions": {
     "sourceType": "module"
   },
   "rules": {
     "no-console": 0,
-    "indent": [
-      "error",
-      2
-    ],
     "linebreak-style": [
       "error",
       "unix"
@@ -26,6 +22,15 @@ module.exports = {
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "comma-dangle": ["error", {
+      "arrays": "always",
+      "objects": "always",
+      "imports": "ignore",
+      "exports": "ignore",
+      "functions": "ignore"
+    }]
   }
 };
+
+
