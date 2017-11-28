@@ -38,6 +38,10 @@ app.use(cookieParser());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// public path
+app.use(express.static(path.join(__dirname, "public")));
+
+// route settings
 app.use("/", index);
 
 /* eslint-disable no-unused-vars */

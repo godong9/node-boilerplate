@@ -9,7 +9,7 @@ router.use("/users", UserController);
 
 /* GET index page */
 router.get("/", (req, res) => {
-  res.send("index page");
+  res.render("index");
 });
 
 export default router;
