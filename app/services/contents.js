@@ -10,27 +10,35 @@ const commonOptions = {
   ],
 };
 
-const ContentService = {
-  getContents: function getContents(params) {
-    const modelParams = Object.assign({}, params, commonOptions);
-    return Content.findAll(modelParams);
-  },
-  getContentsByUserId: function getContents(userId) {
-    const modelParams = Object.assign({}, commonOptions);
-    modelParams.include[0].where = { id: userId, };
-    return Content.findAll(modelParams);
-  },
-  getContent: function getContent(id) {
-    const options = Object.assign({}, commonOptions);
-    return Content.findById(id, options);
-  },
-  saveContent: function saveContent(params) {
-    const modelParams = Object.assign({}, params);
-    return Content.create(modelParams);
-  },
-  deleteAll: function deleteAll() {
-    return Content.destroy({ truncate: true, });
-  },
-};
+function getContents(params) {
+  const modelParams = Object.assign({}, params, commonOptions);
+  return Content.findAll(modelParams);
+}
 
-module.exports = ContentService;
+function getContentsByUserId(userId) {
+  const modelParams = Object.assign({}, commonOptions);
+  modelParams.include[0].where = { id: userId, };
+  return Content.findAll(modelParams);
+}
+
+function getContent(id) {
+  const options = Object.assign({}, commonOptions);
+  return Content.findById(id, options);
+}
+
+function saveContent(params) {
+  const modelParams = Object.assign({}, params);
+  return Content.create(modelParams);
+}
+
+function deleteAll() {
+  return Content.destroy({ truncate: true, });
+}
+
+module.exports = {
+  getContents: getContents,
+  getContentsByUserId: getContentsByUserId,
+  getContent: getContent,
+  saveContent: saveContent,
+  deleteAll: deleteAll,
+};

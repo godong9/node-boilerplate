@@ -6,15 +6,12 @@ const UserService = require("../../app/services/users");
 
 describe("GET /users", () => {
   before((done) => {
-
     // given
     UserService.deleteAll()
-      .then(
-        UserService.saveUser({ nickname: "test", email: "test@test.com" })
-          .then(function () {
-            done();
-          })
-      );
+      .then(UserService.saveUser({ nickname: "test", email: "test@test.com", })
+        .then(() => {
+          done();
+        }));
   });
 
   it("should success and get users", (done) => {

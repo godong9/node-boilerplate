@@ -49,7 +49,7 @@ gulp.task("pre-test", () => {
 
 gulp.task("test", ["pre-test"], () => {
   process.env.NODE_ENV = "test";
-  gulp.src([TEST_FILES])
+  return gulp.src([TEST_FILES])
     .pipe(mocha({
       reporter: "nyan",
     }))
