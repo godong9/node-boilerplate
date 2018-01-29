@@ -65,9 +65,7 @@ describe("UserService", () => {
         });
     });
   });
-});
 
-describe("UserService", () => {
   describe("#getUser", () => {
     let testUser = null;
 

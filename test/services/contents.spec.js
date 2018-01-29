@@ -1,9 +1,10 @@
 const expect = require("chai").expect;
+const rewire = require("rewire");
 
 const UserService = require("../../app/services/users");
-const ContentService = require("../../app/services/contents");
+const ContentService = rewire("../../app/services/contents");
 
-describe("ContentService.getContents", () => {
+describe("ContentService", () => {
   describe("#getContents", () => {
     before((done) => {
       // given
@@ -30,9 +31,7 @@ describe("ContentService.getContents", () => {
         });
     });
   });
-});
 
-describe("ContentService", () => {
   describe("#getContentsByUserId", () => {
     let testUser = null;
     before((done) => {
@@ -73,9 +72,7 @@ describe("ContentService", () => {
         });
     });
   });
-});
 
-describe("ContentService", () => {
   describe("#getContent", () => {
     let testContent = null;
 
@@ -102,6 +99,19 @@ describe("ContentService", () => {
           expect(content.user.email).to.equal("test@test.com");
           done();
         });
+    });
+  });
+
+  describe("#_privateTest", () => {
+    it("should get test", (done) => {
+      const _privateTestFunc = ContentService.__get__("_privateTest");
+
+      // when
+      const result = _privateTestFunc();
+
+      // then
+      expect(result).to.equal("test");
+      done();
     });
   });
 });

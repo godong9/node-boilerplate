@@ -35,6 +35,10 @@ function deleteAll() {
   return Content.destroy({ truncate: true, });
 }
 
+function _privateTest() {
+  return "test";
+}
+
 module.exports = {
   getContents: getContents,
   getContentsByUserId: getContentsByUserId,
