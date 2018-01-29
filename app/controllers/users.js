@@ -20,6 +20,7 @@ router.get("/", (req, res) => {
       users: users,
     });
   }).catch(err => {
+    /* istanbul ignore next */
     res.status(HttpCode.INTERNAL_SERVER_ERROR).send({
       error: err,
     });
