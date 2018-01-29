@@ -1,6 +1,6 @@
-import express from "express";
-import UserService from "../services/users";
-import HttpCode from "../helpers/httpCode";
+const express = require("express");
+const UserService = require("../services/users");
+const HttpCode = require("../helpers/httpCode");
 
 const router = express.Router();
 
@@ -26,4 +26,4 @@ router.get("/", (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

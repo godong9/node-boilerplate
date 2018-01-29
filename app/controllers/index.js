@@ -1,6 +1,6 @@
-import express from "express";
+const express = require("express");
 
-import UserController from "./users";
+const UserController = require("./users");
 
 const router = express.Router();
 
@@ -12,4 +12,4 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-export default router;
+module.exports = router;

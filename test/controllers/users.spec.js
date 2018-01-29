@@ -1,8 +1,8 @@
-import request from "supertest";
-import { expect } from "chai";
+const request = require("supertest");
+const expect = require("chai").expect;
 
-import app from "../../app/app";
-import UserService from "../../app/services/users";
+const app = require("../../app/app");
+const UserService = require("../../app/services/users");
 
 describe("GET /users", () => {
   before((done) => {

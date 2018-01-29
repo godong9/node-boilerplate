@@ -1,7 +1,7 @@
-import { expect } from "chai";
+const expect = require("chai").expect;
 
-import UserService from "../../app/services/users";
-import ContentService from "../../app/services/contents";
+const UserService = require("../../app/services/users");
+const ContentService = require("../../app/services/contents");
 
 describe("ContentService.getContents", () => {
   describe("#getContents", () => {

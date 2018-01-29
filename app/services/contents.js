@@ -1,4 +1,4 @@
-import models from "../models";
+const models = require("../models");
 
 const Content = models.Content;
 
@@ -33,4 +33,4 @@ const ContentService = {
   },
 };
 
-export default ContentService;
+module.exports = ContentService;

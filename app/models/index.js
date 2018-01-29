@@ -1,8 +1,8 @@
-import fs from "fs";
-import path from "path";
-import Sequelize from "sequelize";
-import config from "config";
-import _ from "lodash";
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const config = require("config");
+const _ = require("lodash");
 
 const Op = Sequelize.Op;
 const operatorsAliases = {
@@ -68,4 +68,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

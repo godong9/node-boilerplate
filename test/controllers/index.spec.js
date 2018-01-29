@@ -1,7 +1,7 @@
-import request from "supertest";
-import { expect } from "chai";
+const request = require("supertest");
+const expect = require("chai").expect;
 
-import app from "../../app/app";
+const app = require("../../app/app");
 
 describe("GET /", () => {
   it("should respond with text message 'index page'", (done) => {
@@ -9,7 +9,7 @@ describe("GET /", () => {
       .get("/")
       .expect(200)
       .end((err, res) => {
-        expect(res.text).to.equal("index page");
+        expect(res.text).to.exist;
         done();
       });
   });

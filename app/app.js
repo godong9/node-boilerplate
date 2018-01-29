@@ -1,15 +1,14 @@
-import express from "express";
-import morgan from "morgan";
-import config from "config";
-import path from "path";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import helmet from "helmet";
+const express = require("express");
+const morgan = require("morgan");
+const config = require("config");
+const path = require("path");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 
-import logger from "./helpers/logger";
-import HttpCode from "./helpers/httpCode";
-
-import index from "./controllers/index";
+const logger = require("./helpers/logger");
+const HttpCode = require("./helpers/httpCode");
+const IndexController = require("./controllers/index");
 
 const MAXIMUM_BODY_SIZE = "10mb";
 const MORGAN_LOGGING_TYPE = "short";
@@ -42,7 +41,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 // route settings
-app.use("/", index);
+app.use("/", IndexController);
 
 /* eslint-disable no-unused-vars */
 // error handler

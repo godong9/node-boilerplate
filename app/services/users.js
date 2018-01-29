@@ -1,4 +1,4 @@
-import models from "../models";
+const models = require("../models");
 
 const User = models.User;
 
@@ -19,4 +19,4 @@ const UserService = {
   },
 };
 
-export default UserService;
+module.exports = UserService;

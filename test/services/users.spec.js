@@ -1,6 +1,6 @@
-import { expect } from "chai";
+const expect = require("chai").expect;
 
-import UserService from "../../app/services/users";
+const UserService = require("../../app/services/users");
 
 describe("UserService", () => {
   describe("#getUsers", () => {

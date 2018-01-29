@@ -1,4 +1,4 @@
-module.exports = {
+{
   "env": {
     "browser": true,
     "node": true,
@@ -24,13 +24,13 @@ module.exports = {
       "always"
     ],
     "comma-dangle": ["error", {
-      "arrays": "always",
+      "arrays": "ignore",
       "objects": "always",
       "imports": "ignore",
       "exports": "ignore",
       "functions": "ignore"
     }]
   }
-};
+}
 
 

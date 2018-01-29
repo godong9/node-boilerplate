@@ -1,8 +1,10 @@
-import winston from "winston";
-import config from "config";
-import "winston-daily-rotate-file";
+const winston = require("winston");
+const config = require("config");
+const dailyLogRotate = require("winston-daily-rotate-file");
 
 const logger = new winston.Logger({});
+
+winston.transports.DailyLogRotate = dailyLogRotate;
 
 logger.configure({
   transports: [
@@ -18,4 +20,4 @@ logger.stream = {
   },
 };
 
-export default logger;
+module.exports = logger;
