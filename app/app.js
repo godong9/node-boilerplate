@@ -8,6 +8,7 @@ const helmet = require("helmet");
 
 const logger = require("./helpers/logger");
 const HttpCode = require("./helpers/httpCode");
+const AjaxResponse = require("./helpers/ajaxResponse");
 const IndexController = require("./controllers/index");
 
 const MAXIMUM_BODY_SIZE = "10mb";
@@ -52,9 +53,9 @@ app.use((err, req, res, next) => {
 
   logger.error(err);
 
-  // render the error page
+  // send error response
   res.status(err.status || HttpCode.INTERNAL_SERVER_ERROR);
-  res.render("error");
+  res.send(AjaxResponse.error("Server error!"));
 });
 
 app.listen(port, () => {

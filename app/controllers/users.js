@@ -2,9 +2,9 @@ const express = require("express");
 const { check, param, query, validationResult } = require("express-validator/check");
 
 const UserService = require("../services/users");
-const HttpCode = require("../helpers/httpCode");
 const ErrorFormatter = require("../helpers/errorFormatter");
 const logger = require("../helpers/logger");
+const AjaxResponse = require("../helpers/ajaxResponse");
 
 const router = express.Router();
 
@@ -18,17 +18,10 @@ const router = express.Router();
  * @apiSuccess {String} users.email 유저 이메일
  * @apiSuccess {String} users.nickname 유저 닉네임
  */
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   UserService.getUsers().then(users => {
-    res.status(HttpCode.OK).send({
-      users: users,
-    });
-  }).catch(err => {
-    /* istanbul ignore next */
-    res.status(HttpCode.INTERNAL_SERVER_ERROR).send({
-      error: err,
-    });
-  });
+    res.send(AjaxResponse.success({ users: users, }));
+  }).catch(err => next(err));
 });
 
 /**
@@ -45,24 +38,17 @@ router.get("/:id", [
   check("email").isEmail().withMessage("잘못된 이메일입니다."),
   param("id").isInt(),
   query("name").isAlphanumeric()
-], (req, res) => {
+], (req, res, next) => {
   const errors = validationResult(req).formatWith(ErrorFormatter);
   if (!errors.isEmpty()) {
     logger.debug(errors.mapped());
-    res.send({ errors: errors.array(), });
+    res.send(AjaxResponse.error(errors.array()));
     return;
   }
 
   UserService.getUser(req.params.id).then(user => {
-    res.status(HttpCode.OK).send({
-      user: user,
-    });
-  }).catch(err => {
-    /* istanbul ignore next */
-    res.status(HttpCode.INTERNAL_SERVER_ERROR).send({
-      error: err,
-    });
-  });
+    res.send(Response.success({ user: user, }));
+  }).catch(err => next(err));
 });
 
 module.exports = router;
