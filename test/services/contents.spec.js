@@ -28,7 +28,8 @@ describe("ContentService", () => {
           expect(contents[0].user.nickname).to.equal("test");
           expect(contents[0].user.email).to.equal("test@test.com");
           done();
-        });
+        })
+        .catch(e => done(e));
     });
   });
 
