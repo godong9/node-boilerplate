@@ -1,16 +1,20 @@
 const winston = require("winston");
 const config = require("config");
+const moment = require("moment");
 const dailyLogRotate = require("winston-daily-rotate-file");
 
 const logger = new winston.Logger({});
+const timestampOptions = {
+  timestamp: () => moment().format(),
+};
 
 winston.transports.DailyLogRotate = dailyLogRotate;
 
 logger.configure({
   transports: [
-    new winston.transports.Console(config.get("logger").console),
-    new winston.transports.File(config.get("logger").file),
-    new winston.transports.DailyRotateFile(config.get("logger").rotate),
+    new winston.transports.Console(Object.assign({}, config.get("logger").console, timestampOptions)),
+    new winston.transports.File(Object.assign({}, config.get("logger").file, timestampOptions)),
+    new winston.transports.DailyRotateFile(Object.assign({}, config.get("logger").rotate, timestampOptions)),
   ],
 });
 
