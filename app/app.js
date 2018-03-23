@@ -59,7 +59,17 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
+  logger.info(`Server NODE_ENV: ${process.env.NODE_ENV}`);
   logger.info(`Server is Listening port ${port}.`);
 });
+
+process
+  .on("unhandledRejection", (reason, p) => {
+    logger.error("Unhandled Rejection at:", p, "reason:", reason);
+  })
+  .on("uncaughtException", err => {
+    logger.error("UncaughtException:", err);
+    process.exit(1);
+  });
 
 module.exports = app;
