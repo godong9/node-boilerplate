@@ -66,10 +66,6 @@ app.listen(port, () => {
 process
   .on("unhandledRejection", (reason, p) => {
     logger.error("Unhandled Rejection at:", p, "reason:", reason);
-  })
-  .on("uncaughtException", err => {
-    logger.error("UncaughtException:", err);
-    process.exit(1);
   });
 
 module.exports = app;
